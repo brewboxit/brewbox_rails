@@ -42,5 +42,6 @@ gem 'pg'
 
 gem 'haml'
 gem "haml-rails"
-gem 'bootstrap-sass', '~> 3.3.6'
+#gem 'bootstrap-sass', '~> 3.3.6'
 gem 'simple_form'
+gem 'quiet_assets', group: :development
