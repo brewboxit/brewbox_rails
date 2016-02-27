@@ -1,10 +1,38 @@
 !!!
-%html
+%html{:lang => "en"}
   %head
-    %title BrewboxRails
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport"}/
+    / The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags
+    %meta{:content => "", :name => "description"}/
+    %meta{:content => "", :name => "author"}/
+    %link{:href => "../../favicon.ico", :rel => "icon"}/
+    %title= @application_name
+    / Bootstrap core CSS
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    / Custom styles for this template
+    /%link{:href => "starter-template.css", :rel => "stylesheet"}/
     = csrf_meta_tags
   %body
-    %h1 Application title
-    = yield
+    %nav.navbar.navbar-fixed-top.navbar-dark.bg-inverse
+      %a.navbar-brand{:href => "#"}= @application_name
+      %ul.nav.navbar-nav
+        %li.nav-item.active
+          %a.nav-link{:href => root_url}
+            Home
+            %span.sr-only (current)
+        %li.nav-item
+          %a.nav-link{:href => users_url}= User.name.pluralize
+        %li.nav-item
+          %a.nav-link{:href => polls_url}= Poll.name.pluralize
+    .container
+      .starter-template
+        = yield
+    / /.container
+    /
+      Bootstrap core JavaScript
+      \==================================================
+    / Placed at the end of the document so the pages load faster
+    = javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js'
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true

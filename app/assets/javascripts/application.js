@@ -10,7 +10,17 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
 //= require jquery
+// While bootstrap-sprockets provides individual Bootstrap components
+// for ease of debugging, you may alternatively require the concatenated bootstrap
+// for faster compilation:
+//= _require bootstrap-sprockets
+//= require bootstrap
+
+
+
+
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .

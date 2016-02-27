@@ -10,6 +10,22 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= require_self
  */
+
+// Custom bootstrap variables must be set or import before bootstrap itself.
+//Do not use *= require in Sass or your other stylesheets will not be able to access the Bootstrap mixins and variables.
+
+
+@import "variables"
+@import "bootstrap"
+@import "tables"
+
+
+//= require_tree .
+//= require_self
+
+body
+  padding-top: 2rem
+
+.starter-template
+  padding: 3rem 1.5rem

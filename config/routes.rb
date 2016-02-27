@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :users
+  resources :polls
 
-  resources :questions
+  resources :users
 
   get 'welcome/index'
 
