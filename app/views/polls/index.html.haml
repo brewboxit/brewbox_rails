@@ -1,16 +1,18 @@
 %h1 Listing polls
 
 %table
-  %tr
-    %th
-    %th
-    %th
-
-  - @polls.each do |poll|
+  %thead
     %tr
-      %td= link_to 'Show', poll
-      %td= link_to 'Edit', edit_poll_path(poll)
-      %td= link_to 'Destroy', poll, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %th
+      %th
+      %th
+
+  %tbody
+    - @polls.each do |poll|
+      %tr
+        %td= link_to 'Show', poll
+        %td= link_to 'Edit', edit_poll_path(poll)
+        %td= link_to 'Destroy', poll, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
