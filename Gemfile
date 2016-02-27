@@ -48,3 +48,6 @@ source 'https://rails-assets.org' do
 end
 gem 'simple_form'
 gem 'quiet_assets', group: :development
+gem 'devise', :git => 'https://github.com/plataformatec/devise.git'
+gem 'activeadmin', github: 'activeadmin'
+gem 'omniauth'
