@@ -1,5 +1,5 @@
 class PollsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index]
   before_action :set_poll, only: [:show, :edit, :update, :destroy]
 
   # GET /polls
@@ -26,6 +26,7 @@ class PollsController < ApplicationController
   # POST /polls.json
   def create
     @poll = Poll.new(poll_params)
+    @poll.user = current_user
 
     respond_to do |format|
       if @poll.save
@@ -70,6 +71,6 @@ class PollsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def poll_params
-      params.fetch(:poll, {})
+      params.fetch(:poll, {}).permit(:title, :description)
     end
 end

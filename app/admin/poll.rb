@@ -8,8 +8,8 @@ ActiveAdmin.register Poll do
   # or
   #
   permit_params do
-    permitted = [:title, :description]
-    permitted << :other if params[:action] == 'create' && current_user.admin?
+    permitted = [:title, :description, :user_id, :category_id, :active]
+    #permitted << :other if params[:action] == 'create' && current_user.admin?
     permitted
   end
 
@@ -17,6 +17,8 @@ ActiveAdmin.register Poll do
     selectable_column
     column :id
     column :user
+    column :active
+    column :category
     column :title
     column :description
 
@@ -29,9 +31,13 @@ ActiveAdmin.register Poll do
   form do |f|
     f.inputs 'Details' do
       f.input :user
+      f.input :active
+      f.input :category
       f.input :title
       f.input :description
+
     end
+     f.actions
   end
 
 end

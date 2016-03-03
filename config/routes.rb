@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
+
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users
+  
   resources :polls
+  resources :categories
 
-  resources :users
+  #resources :users
 
   get 'welcome/index'
 

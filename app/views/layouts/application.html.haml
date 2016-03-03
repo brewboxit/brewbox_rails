@@ -22,10 +22,17 @@
           %a.nav-link{:href => root_url}
             Home
             %span.sr-only (current)
-        %li.nav-item
-          %a.nav-link{:href => users_url}= User.name.pluralize
+        //%li.nav-item
+        //  %a.nav-link{:href => users_url}= User.name.pluralize
         %li.nav-item
           %a.nav-link{:href => polls_url}= Poll.name.pluralize
+        - if current_user
+          %li.nav-item
+            %a.nav-link{:href => destroy_user_session_path}= "Logout"
+        - else
+          %li.nav-item
+            %a.nav-link{:href => new_user_session_path}= "Sign In"
+
     .container
       .starter-template
         = yield
