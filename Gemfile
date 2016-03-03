@@ -36,9 +36,16 @@ gem 'spring',        group: :development
 # gem 'capistrano-rails', group: :development
 
 # Use debugger
-# gem 'debugger', group: [:development, :test]
+# gem 'debugger', group: [:development, :test
 
-gem 'pg'
+group :production do 
+  gem 'pg'
+end
+
+group :test, :development do
+  gem 'sqlite3'
+end
+
 gem 'haml'
 gem "haml-rails"
 #https://github.com/twbs/bootstrap-rubygem

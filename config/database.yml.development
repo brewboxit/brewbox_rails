@@ -5,30 +5,24 @@
 #   gem 'sqlite3'
 #
 default: &default
-  #adapter: postgresql
-  #encoding: unicode
-  #pool: 5
-  #username: magnum
-  #password:
-  adapter: sqlite3
-  timeout: 5000
+  adapter: postgresql
+  encoding: unicode
   pool: 5
+  username: magnum
+  password:
+
 
 development:
   <<: *default
-  database: db/development.sqlite3
+  database: brewbox_rails_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/test.sqlite3
+  database: brewbox_rails_test
 
 production:
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
-  username: magnum
-  password:
+  <<: *default
   database: brewbox_rails_production
