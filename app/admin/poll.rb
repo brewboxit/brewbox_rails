@@ -14,6 +14,10 @@ ActiveAdmin.register Poll do
     permitted
   end
 
+  # before_create do |poll|
+  #   poll.user = current_user
+  # end
+
   index do
     selectable_column
     column :id
@@ -51,17 +55,13 @@ ActiveAdmin.register Poll do
 
   form do |f|
     f.inputs 'Details' do
-      f.input :user
+      # f.input :user, as: :select, collection: User.all, include_blank: true, input_html: { disabled: true, value: current_user.id }
+      f.input :user, as: :select, collection: options_for_select(User.all.map{|u| [u.fullname, u.id]}, (f.object.new_record? ? current_user.id : f.object.user.id)), include_blank: true, input_html: { disabled: false } 
       f.input :active
       f.input :category
       f.input :title
       f.input :description
     end
-    # f.inputs 'Options' do
-    #   f.has_many :options, sortable: :position do |t|
-    #     t.input :value
-    #   end
-    # end
 
     f.inputs 'Options' do
       f.has_many :options, allow_destroy: true, sortable: :ord  do |t|

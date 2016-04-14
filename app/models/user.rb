@@ -10,15 +10,18 @@ class User < ActiveRecord::Base
   validates :firstname, presence: true
   validates :lastname, presence: true
 
-
   def password=(new_password)
     attribute_will_change! 'password'
     @password = new_password
     self.encrypted_password = password_digest(@password) if @password.present?
   end
 
-  def to_label
+  def fullname
     "#{self.firstname} #{self.lastname}"
+  end
+
+  def to_label
+    self.fullname
   end
 
 end
