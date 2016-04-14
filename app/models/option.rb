@@ -4,4 +4,8 @@ class Option < ActiveRecord::Base
   validates :value, presence: true
   # validates :poll, presence: true
 
+  def to_s
+    self.label.blank? ? self.value : self.label
+  end
+
 end

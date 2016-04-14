@@ -8,7 +8,7 @@ ActiveAdmin.register Poll do
   # or
   #
   permit_params do
-    permitted = [:title, :description, :user_id, :category_id, :active, options_attributes: [ :id, :value, :_destroy ]]
+    permitted = [:title, :description, :user_id, :category_id, :active, options_attributes: [ :id, :value, :ord, :label, :_destroy ]]
 
     #permitted << :other if params[:action] == 'create' && current_user.admin?
     permitted
@@ -42,7 +42,9 @@ ActiveAdmin.register Poll do
     panel "Options" do
       table_for poll.options do
         column :id
+        column :label
         column :value
+        column :ord
       end
     end
   end
@@ -62,7 +64,8 @@ ActiveAdmin.register Poll do
     # end
 
     f.inputs 'Options' do
-      f.has_many :options, allow_destroy: true  do |t|
+      f.has_many :options, allow_destroy: true, sortable: :ord  do |t|
+        t.input :label
         t.input :value
       end
     end
