@@ -8,4 +8,8 @@ class Category < ActiveRecord::Base
     self.slug = "#{self.name.parameterize.underscore}"
   end
 
+  def count
+    self.polls.count
+  end
+
 end
